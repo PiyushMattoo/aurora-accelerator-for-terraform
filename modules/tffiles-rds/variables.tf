@@ -4,14 +4,6 @@ variable "environment" {}
 variable "groupname" {}
 variable "project" {}
 
-variable "enable_aurora" {
-  description = "Enable Aurora"
-  default     = false
-  type        = bool
-}
-
-
-
 variable "secrets_arn" {
   type        = string
   default     = ""  
