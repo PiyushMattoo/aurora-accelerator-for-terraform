@@ -1,11 +1,3 @@
-provider "aws" {
-  shared_config_files      = ["/Users/ypreddy/.aws/conf"]
-  shared_credentials_files = ["/Users/ypreddy/.aws/creds"]
-  profile                  = "customprofile"
-}
-
-
-
 data "aws_subnet" "example" {
   for_each = toset(local.my_subnets)
 
@@ -54,7 +46,7 @@ module "aurora" {
   environment			        = "dev"
   groupname			          = "dev"
   project			            = "dev"	 
-  region			            = "useast1"
+  region			            = "us-east-1"
   name				            = "dev"
 }
 
@@ -64,7 +56,7 @@ module "dbproxy" {
   enable_dbproxy          = "true" 
   name                    = "devdbproxy"
   environment             = "dev"
-  region                  = "useast1"
+  region                  = "us-east-1"
   groupname               = "dev"
   project                 = "dev"
   vpc_security_group_ids  = ["dev"]
@@ -75,7 +67,7 @@ module "lambda" {
   source = "./modules/tffiles-lambda"
   # lambda required fields
   enable_lambda          = "true" 
-  region                 = "useast1"
+  region                 = "us-east-1"
   subnet_ids             = ["local.subnet_ids"]
   vpc_id                 = "dev"
   environment            = "dev" 
@@ -97,6 +89,6 @@ module "route53" {
   read_endpoint           = "dev"
   write_endpoint          = "dev"
   domain                  = "dev" 
-  region                  = "useast1" 
+  region                  = "us-east-1" 
 }
 
