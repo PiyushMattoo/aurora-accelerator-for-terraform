@@ -38,6 +38,7 @@ resource "aws_db_proxy_default_target_group" "this" {
 }
 
 resource "aws_db_proxy_target" "this" {
+  count = var.enable_dbproxy ? 1 : 0
   db_cluster_identifier  = var.db_cluster_identifier
   db_proxy_name          = aws_db_proxy.this.name
   target_group_name      = aws_db_proxy_default_target_group.this.name
