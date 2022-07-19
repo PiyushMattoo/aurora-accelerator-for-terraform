@@ -11,84 +11,77 @@ locals {
   ])
 }
 
-module "aurora" {
-  source = "./modules/tffiles-rds"
-  # Aurora required fields
-  # Start boolean values as true, false
-  create_cluster                        = "true"
-  create_random_password                = "true"
-  #"Determines whether cluster is primary cluster with writer instance (set to `false` for global cluster and replica clusters)"
-  is_primary_cluster                    = "true" 
-  #"Whether cluster should forward writes to an associated global cluster. Applied to secondary clusters to enable them to forward writes to an `aws_rds_global_cluster`'s primary cluster"
-  enable_global_write_forwarding        = "false" 
-  allow_major_version_upgrade           = "false"
-  skip_final_snapshot                   = "false"
-  deletion_protection                   = "false" 
-  storage_encrypted                     = "true" 
-  apply_immediately                     = "false"
-  iam_database_authentication_enabled   = "false"
-  iam_role_force_detach_policies        = "false"
-  instances_use_identifier_prefix       = "false"
-  publicly_accessible                   = "false"
-  auto_minor_version_upgrade            = "false"
-  performance_insights_enabled          = "false"
-  iam_role_use_name_prefix              = "false"
-  copy_tags_to_snapshot                 = "false"
-  enable_http_endpoint                  = "false"
-  create_db_subnet_group                = "true"
-  create_monitoring_role                = "true"
-  monitoring_interval                   = "0"
-  autoscaling_enabled                   = "false"
-  create_security_group                 = "true"
-  security_group_egress_rules           = {}
+module "auroraglobal" {
+	source = "./modules/tffiles-aurora-global" 
+        sec_region = "null"
+        Private_subnet_ids_s = ["local.subnet_ids"]
+        region = "null"
+        Private_subnet_ids_p = ["local.subnet_ids"]
+        password = "null"
+	#set setup_globaldb to true if you want to create an Aurora global DB cluster spread across 2 AWS Regions
+	setup_globaldb = true
+
+	# Set up aws_rds_cluster.primary Terraform resource as secondary Aurora cluster after an unplanned Aurora global DB failover (detach and promote of the secondary Region)
+
+	# If you are setting up a brand new Aurora global cluster, set the setup_as_secondary variable to false
+	setup_as_secondary = false
+
+	#set storage_encrypted to true to enable Aurora storage encryption using AWS KMS
+	storage_encrypted = true
+
+	# Number of instances to set up for primary Aurora cluster
+	primary_instance_count = 2
+}
+#module "aurora" {
+#  source = "./modules/tffiles-rds"
   # End boolean values 
-  subnets  			          = ["local.subnet_ids"] 
-  environment			        = "dev"
-  groupname			          = "dev"
-  project			            = "dev"	 
-  region			            = "us-east-1"
-  name				            = "dev"
-}
+#  subnets  			          = ["local.subnet_ids"] 
+#  environment			        = "dev"
+#  groupname			          = "dev"
+#  project			            = "dev"	 
+#  region			            = "us-east-1"
+#  name				            = "dev"
+#}
 
-module "dbproxy" {
-  source = "./modules/tffiles-dbproxy"
+#module "dbproxy" {
+#  source = "./modules/tffiles-dbproxy"
   # dbproxy required fields
-  enable_dbproxy          = "true" 
-  name                    = "devdbproxy"
-  environment             = "dev"
-  region                  = "us-east-1"
-  groupname               = "dev"
-  project                 = "dev"
-  vpc_security_group_ids  = ["dev"]
-  subnets	          = ["local.subnet_ids"]
-}
+#  enable_dbproxy          = "false" 
+#  name                    = "devdbproxy"
+#  environment             = "dev"
+#  region                  = "us-east-1"
+#  groupname               = "dev"
+#  project                 = "dev"
+#  vpc_security_group_ids  = ["dev"]
+#  subnets	          = ["local.subnet_ids"]
+#}
 
-module "lambda" {
-  source = "./modules/tffiles-lambda"
+#module "lambda" {
+ # source = "./modules/tffiles-lambda"
   # lambda required fields
-  enable_lambda          = "true" 
-  region                 = "us-east-1"
-  subnet_ids             = ["local.subnet_ids"]
-  vpc_id                 = "dev"
-  environment            = "dev" 
-  groupname              = "dev"
-  project                = "dev"
-  s3_key                 = "dev"
-  secret_name            = "dev"
-  name                   = "dev"
-  s3_bucket              = "dev"
-  iam_role               = "dev"  
-}
+  #enable_lambda          = "true" 
+  #region                 = "us-east-1"
+  #subnet_ids             = ["local.subnet_ids"]
+  #vpc_id                 = "dev"
+  #environment            = "dev" 
+  #groupname              = "dev"
+  #project                = "dev"
+  #s3_key                 = "dev"
+  #secret_name            = "dev"
+  #name                   = "dev"
+  #s3_bucket              = "dev"
+  #iam_role               = "dev"  
+#}
 
-module "route53" {
-  source = "./modules/tffiles-route53"
-  # route53 required fields
-  enable_route53          = "true"
-  internal_read_endpoint  = "dev"
-  internal_write_endpoint = "dev"
-  read_endpoint           = "dev"
-  write_endpoint          = "dev"
-  domain                  = "dev" 
-  region                  = "us-east-1" 
-}
+#module "route53" {
+#  source = "./modules/tffiles-route53"
+#  # route53 required fields
+#  enable_route53          = "false"
+#  internal_read_endpoint  = "dev"
+#  internal_write_endpoint = "dev"
+#  read_endpoint           = "dev"
+#  write_endpoint          = "dev"
+#  domain                  = "dev" 
+#  region                  = "us-east-1" 
+#}
 
