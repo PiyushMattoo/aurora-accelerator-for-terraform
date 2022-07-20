@@ -37,13 +37,13 @@ To deploy the Terraform Amazon Aurora module, do the following:
 
 5. If you don't have git installed, [install git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-6. Clone this **aws-ia/terraform-aws-rds-aurora** repository using the following command:
+6. Clone this ** awsdabra/aurora-accelerator-for-terraform** repository using the following command:
 
-   `git clone https://github.com/aws-ia/terraform-aws-rds-aurora.git`
+   `git clone https://github.com/awsdabra/aurora-accelerator-for-terraform.git`
 
 7. Change directory to the root repository directory.
 
-   `cd terraform-aws-rds-aurora/`
+   `cd aurora-accelerator-for-terraform/`
 
 8. Set up a new terraform workspace.
    
@@ -55,9 +55,8 @@ To deploy the Terraform Amazon Aurora module, do the following:
 
 9. Deploy Aurora Terraform module.
    1. To create VPC and deploy Aurora module
-      - Change to the deploy directory. Run `cd ../deploy`
       - Initialize the deploy directory. Run `terraform init`.
-      - Start a Terraform run using the configuration files in your deploy directory. Run `terraform apply`  or `terraform apply -var-file="$HOME/.aws/terraform.tfvars"` (Note: The deployment is remotely run in Terraform Cloud)
+      - Start a Terraform run using the configuration files (deploy.tf) in your deploy directory. Run `terraform apply`  or `terraform apply -var-file="$HOME/.aws/terraform.tfvars"` (Note: The deployment is remotely run in Terraform Cloud)
    2. To deploy Aurora module into existing VPCs, pass the list of private subnets (var.Private\_subnet\_ids\_p & var.Private\_subnet\_ids\_s) directly to the Aurora module.
 
 
@@ -69,9 +68,9 @@ The below demonstrates how you can leverage Aurora Blueprints to deploy an Auror
 module "auroraglobal" {
 	source = "./modules/tffiles-aurora-global" 
 	sec_region = "null"
-	Private_subnet_ids_s = ["local.subnet_ids"]
+	private_subnet_ids_s = ["local.subnet_ids"]
 	region = "null"
-	Private_subnet_ids_p = ["local.subnet_ids"]
+	private_subnet_ids_p = ["local.subnet_ids"]
 	password = "null"
 	#set setup_globaldb to true if you want to create an Aurora global DB cluster spread across 2 AWS Regions
 	setup_globaldb = true
@@ -92,4 +91,7 @@ module "auroraglobal" {
 ```hcl
 cd modules/tffiles-aurora-global
 Open variables.tf using vi 
+
+
+```
 
