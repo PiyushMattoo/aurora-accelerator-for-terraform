@@ -56,9 +56,7 @@ To deploy the Terraform Amazon Aurora module, do the following:
       - Initialize the deploy directory. Run `terraform init`.
       - Start a Terraform run using the configuration files (deploy.tf) in your deploy directory. 
 
-## Usage
-
-The below demonstrates how you can leverage Aurora Blueprints to deploy an Aurora global cluster. Modify the paramaters below in the deploy.tf located in the top level folder 
+10.The below demonstrates how you can leverage Aurora Blueprints to deploy an Aurora global cluster. Modify the paramaters below in the deploy.tf located in the top level folder 
 
 ```hcl
 module "auroraglobal" {
@@ -116,9 +114,7 @@ variable "private_subnet_ids_s" {
 
 ```
       
-      
-      - Run `terraform apply`  or `terraform apply -var-file="$HOME/.aws/terraform.tfvars"` (Note: The deployment is remotely run in Terraform Cloud)
-   2. 
+11. Run `terraform apply`  or `terraform apply -var-file="$HOME/.aws/terraform.tfvars"` (Note: The deployment is remotely run in Terraform Cloud)
 
 
 
