@@ -56,9 +56,20 @@ To deploy the Terraform Amazon Aurora module, do the following:
       - Initialize the deploy directory. Run `terraform init`.
       - Start a Terraform run using the configuration files (deploy.tf) in your deploy directory. 
 
-10.The below demonstrates how you can leverage Aurora Blueprints to deploy an Aurora global cluster. Modify the paramaters below in the deploy.tf located in the top level folder 
+10.The below demonstrates how you can leverage Aurora Blueprints to deploy an Aurora global cluster. Modify the paramaters below in the deploy.tf located in the top level folder. 
+
+ To use existing VPC subnet ids, update the locals below in the deploy.tf. If new subnets will be created, set private_subnet_ids_s and private_subnet_ids_p to null.  
+
 
 ```hcl
+vi deploy.tf in root directory 
+locals {
+  my_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
+  subnet_ids = toset([
+    for subnet in data.aws_subnet.example : subnet.id
+  ])
+}
+
 module "auroraglobal" {
 	source = "./modules/tffiles-aurora-global" 
 	sec_region = "null"
@@ -85,8 +96,7 @@ module "auroraglobal" {
 ```hcl
 cd modules/tffiles-aurora-global
 Open variables.tf using vi 
-- To deploy Aurora module into existing VPCs, pass the list of private subnets (var.Private\_subnet\_ids\_p & var.Private\_subnet\_ids\_s) directly to the Aurora module.
-- Update the default primary and secondary region. Save the file.  
+Update the default primary and secondary region. Save the file.  
 
 variable "region" {
   type        = string
@@ -99,17 +109,6 @@ variable "sec_region" {
   description = "The name of the secondary AWS region you wish to deploy into"
   default     = "us-west-1" 
 }
-
-variable "private_subnet_ids_p" {
-  type        = list(string)
-  description = "A list of private subnet IDs in your Primary AWS region VPC"
-}
-
-variable "private_subnet_ids_s" {
-  type        = list(string)
-  description = "A list of private subnet IDs in your Secondary AWS region VPC"
-}
-
 
 
 ```
