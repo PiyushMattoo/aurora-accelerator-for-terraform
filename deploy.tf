@@ -1,22 +1,31 @@
-data "aws_subnet" "example" {
-  for_each = toset(local.my_subnets)
-
+data "aws_subnet" "primary" {
+  for_each = toset(local.my_primary_subnets)
   cidr_block = each.key
 }
 
+data "aws_subnet" "secondary" {
+  for_each = toset(local.my_secondary_subnets)
+  cidr_block = each.key
+}
+
+
 locals {
-  my_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
-  subnet_ids = toset([
-    for subnet in data.aws_subnet.example : subnet.id
+  my_primary_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
+  my_secondary_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
+  primary_subnet_ids = toset([
+    for subnet in data.aws_subnet.primary : subnet.id
+  ])
+  secondary_subnet_ids = toset([
+    for subnet in data.aws_subnet.secondary : subnet.id
   ])
 }
 
 module "auroraglobal" {
 	source = "./modules/tffiles-aurora-global"
   sec_region = "null"
-  Private_subnet_ids_s = ["local.subnet_ids"]
+  private_subnet_ids_s = ["local.primary_subnet_ids"]
   region = "null"
-  Private_subnet_ids_p = ["local.subnet_ids"]
+  private_subnet_ids_p = ["local.secondary_subnet_ids"]
   password = "null"
 	#set setup_globaldb to true if you want to create an Aurora global DB cluster spread across 2 AWS Regions
 	setup_globaldb = true
