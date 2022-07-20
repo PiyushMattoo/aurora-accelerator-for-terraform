@@ -58,15 +58,18 @@ To deploy the Terraform Amazon Aurora module, do the following:
 
 10.The below demonstrates how you can leverage Aurora Blueprints to deploy an Aurora global cluster. Modify the paramaters below in the deploy.tf located in the top level folder. 
 
- To use existing VPC subnet ids, update the locals below in the deploy.tf. If new subnets will be created, set private_subnet_ids_s and private_subnet_ids_p to null.  
+ To use existing VPC subnet ids, update the locals below for the primary region and secondary region in the deploy.tf. If new subnets will be created, set private_subnet_ids_s and private_subnet_ids_p to null.  
 
 
 ```hcl
-vi deploy.tf in root directory 
 locals {
-  my_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
-  subnet_ids = toset([
-    for subnet in data.aws_subnet.example : subnet.id
+  my_primary_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
+  my_secondary_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
+  primary_subnet_ids = toset([
+    for subnet in data.aws_subnet.primary : subnet.id
+  ])
+  secondary_subnet_ids = toset([
+    for subnet in data.aws_subnet.secondary : subnet.id
   ])
 }
 
