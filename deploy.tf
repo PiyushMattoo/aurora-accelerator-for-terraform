@@ -22,9 +22,8 @@ locals {
 
 module "auroraglobal" {
 	source = "./modules/tffiles-aurora-global"
-  private_subnet_ids_s = ["local.primary_subnet_ids"]
-  private_subnet_ids_p = ["local.secondary_subnet_ids"]
-  password = "null"
+        private_subnet_ids_s = ["local.primary_subnet_ids"]
+        private_subnet_ids_p = ["local.secondary_subnet_ids"]
 	#set setup_globaldb to true if you want to create an Aurora global DB cluster spread across 2 AWS Regions
 	setup_globaldb = true
 
