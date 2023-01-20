@@ -19,44 +19,25 @@ To deploy the Terraform Amazon Aurora module, do the following:
 
 1. Install Terraform. For instructions and a video tutorial, see [Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli).
 
-2. Sign up and log into [Terraform Cloud](https://www.terraform.io/cloud) (There is a free tier available).
-   1.  Create a [Terraform organization](https://www.terraform.io/docs/cloud/users-teams-organizations/organizations.html#creating-organizations).
+2. [Install](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and [configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) the AWS Command Line Interface (AWS CLI).
 
-3. Configure [Terraform Cloud API access](https://learn.hashicorp.com/tutorials/terraform/cloud-login). Run the following to generate a Terraform Cloud token from the command line interface:
-   ```
-   terraform login
+3. If you don't have git installed, [install git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-   --For Mac/Linux
-   export TERRAFORM_CONFIG="$HOME/.terraform.d/credentials.tfrc.json"
-
-   --For Windows
-   export TERRAFORM_CONFIG="$HOME/AppData/Roaming/terraform.d/credentials.tfrc.json"
-   ```
-
-4. [Install](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and [configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) the AWS Command Line Interface (AWS CLI).
-
-5. If you don't have git installed, [install git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-
-6. Clone this ** awsdabra/aurora-accelerator-for-terraform** repository using the following command:
+4. Clone this ** awsdabra/aurora-accelerator-for-terraform** repository using the following command:
 
    `git clone https://github.com/awsdabra/aurora-accelerator-for-terraform.git`
 
-7. Change directory to the root repository directory.
+5. Change directory to the root repository directory.
 
    `cd aurora-accelerator-for-terraform/`
 
-8. Set up a new terraform workspace.
-   
-   ```
-   cd setup_workspace
-   ```
 
-9. Deploy Aurora Terraform module.
+6. Deploy Aurora Terraform module.
    1. To create VPC and deploy Aurora module
       - Initialize the deploy directory. Run `terraform init`.
       - Start a Terraform run using the configuration files (deploy.tf) in your deploy directory. 
 
-10.The below demonstrates how you can leverage Aurora Blueprints to deploy an Aurora global cluster. Modify the paramaters below in the deploy.tf located in the top level folder. 
+7.The below demonstrates how you can leverage Aurora Blueprints to deploy an Aurora global cluster. Modify the paramaters below in the deploy.tf located in the top level folder. 
 
  To use existing VPC subnet ids, update the locals below for the primary region and secondary region in the deploy.tf. If new subnets will be created, set private_subnet_ids_s and private_subnet_ids_p to null.  
 
@@ -113,7 +94,7 @@ variable "sec_region" {
 
 ```
       
-11. Run `terraform apply`  or `terraform apply -var-file="$HOME/.aws/terraform.tfvars"` (Note: The deployment is remotely run in Terraform Cloud)
+8. Run `terraform apply`
 
 
 
