@@ -1,17 +1,50 @@
-## Terraform Amazon Aurora
+## Aurora Accelerator for Terraform
 
-Terraform module for automating deployment of Amazon Aurora and related resources following AWS best practices.
-Supported Features
+Q: What is Aurora Accelerator for Terraform? 
 
-    Aurora Provisioned cluster (MySQL & PostgreSQL)
-    Aurora Global databases (MySQL & PostgreSQL)
+A: Aurora Accelerator for Terraform is an open source GitHub solution that simplifies and automates intial setup and provisioning (day 1) and on-going maintainance (day 2) operations for Amazon Aurora. It's designed to remove heavy lifting required for AWS customers to migrate from commercial databases such as SQL Server to Amazon Aurora and operating these database in production.
 
-# Terraform Amazon Aurora
-Terraform module for automating deployment of Amazon Aurora and related resources following AWS best practices.
 
-## Supported Features
-- Aurora Provisioned cluster (MySQL & PostgreSQL)
-- Aurora Global databases (MySQL & PostgreSQL)
+Q: Who is the intended audience for Aurora Accelerator for Terraform? 
+
+A: The intended audience for Aurora Accelerator for Terraform are AWS customers who are migrating from commercial databases such as SQL Server to Amazon Aurora.
+
+
+Q: What are some of the key features of Aurora Accelerator for Terraform? 
+
+A: Some of the key features of Aurora Accelerator for Terraform include automation of common tasks:
+   1. Provisioning of new Aurora cluster
+   2. Provisioning of new Aurora Global Database
+   3. Monitoring Aurora database 
+   	a. Amazon CloudWatch
+   	b. Amazon Managed Grafana
+	c. Curated CloudWatch and Grafana Dashboards
+	d. Curated Performance Insights Dashboard for both CloudWatch and Grafana
+   4. Provisiong and Integration with RDS Proxy
+   5. Provisioning of Data Migration Services (DMS) Instances to migrate data to Aurora
+   6. Restore cluster from S3
+
+
+Q: Is there any cost associated with using Aurora Accelerator for Terraform? 
+
+A: No, Aurora Accelerator for Terraform is an open-source solution and is completely free to use. However, you will be responsible for any AWS costs associated with running your Aurora clusters.
+
+
+Q: Is there a community or support forum for Aurora Accelerator for Terraform? 
+
+A: Yes, there is a community forum in GitHub where users can ask questions, share best practices, and provide feedback on Aurora Accelerator for Terraform. Terraform module for automating deployment of Amazon Aurora and related resources following AWS best practices.
+
+Q. What DB Engines are currently supported?
+
+A: Currently, we support below: 
+    1. Aurora Provisioned cluster (MySQL & PostgreSQL)
+    2. Aurora Global databases (MySQL & PostgreSQL)
+
+
+# Terraform Modules
+
+Here's how you can automate deployment of Amazon Aurora and related resources following AWS best practices.
+
 
 ## Deployment Procedure
 
