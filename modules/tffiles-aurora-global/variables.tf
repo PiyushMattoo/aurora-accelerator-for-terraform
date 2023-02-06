@@ -1,13 +1,11 @@
 variable "region" {
   type        = string
   description = "The name of the primary AWS region you wish to deploy into"
-  default     = "us-east-2"
 }
 
 variable "sec_region" {
   type        = string
   description = "The name of the secondary AWS region you wish to deploy into"
-  default     = "us-west-2" 
 }
 
 variable "identifier" {
