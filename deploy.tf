@@ -1,17 +1,20 @@
 data "aws_subnet" "primary" {
+  vpc_id = "vpc-00b6dea52b57c8a8d"
   for_each = toset(local.my_primary_subnets)
   cidr_block = each.key
 }
 
 data "aws_subnet" "secondary" {
+  vpc_id = "vpc-04d0cfc912221b272"
   for_each = toset(local.my_secondary_subnets)
   cidr_block = each.key
+  provider = aws.secondary
 }
 
 
 locals {
-  my_primary_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
-  my_secondary_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
+  my_primary_subnets = ["10.0.128.0/20","10.0.144.0/20","10.0.160.0/20"]
+  my_secondary_subnets = ["10.0.128.0/20", "10.0.144.0/20","10.0.160.0/20"]
   primary_subnet_ids = toset([
     for subnet in data.aws_subnet.primary : subnet.id
   ])
@@ -22,11 +25,13 @@ locals {
 
 module "auroraglobal" {
 	source = "./modules/tffiles-aurora-global"
+        region = "us-east-1" 
+        sec_region = "us-east-2"
         private_subnet_ids_s = ["local.primary_subnet_ids"]
         private_subnet_ids_p = ["local.secondary_subnet_ids"]
 	#set setup_globaldb to true if you want to create an Aurora global DB cluster spread across 2 AWS Regions
 	setup_globaldb = true
-        password = "null"
+        password = null
 	# Set up aws_rds_cluster.primary Terraform resource as secondary Aurora cluster after an unplanned Aurora global DB failover (detach and promote of the secondary Region)
 
 	# If you are setting up a brand new Aurora global cluster, set the setup_as_secondary variable to false

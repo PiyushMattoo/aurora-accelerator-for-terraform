@@ -72,63 +72,18 @@ To deploy the Terraform Amazon Aurora module, do the following:
 
 7.The below demonstrates how you can leverage Aurora Blueprints to deploy an Aurora global cluster. Modify the paramaters below in the deploy.tf located in the top level folder. 
 
- To use existing VPC subnet ids, update the locals below for the primary region and secondary region in the deploy.tf. If new subnets will be created, set private_subnet_ids_s and private_subnet_ids_p to null.  
+1) Create a VPC with three availability zones (AZ) with a subnet in each AZ. 
 
+Sample deploy.tf provided for reference  
+2) To use existing VPC subnet ids, update the locals below for the primary region and secondary region in the deploy.tf.   
 
-```hcl
-locals {
-  my_primary_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
-  my_secondary_subnets = ["10.1.101.0/24", "10.1.201.0/24"]
-  primary_subnet_ids = toset([
-    for subnet in data.aws_subnet.primary : subnet.id
-  ])
-  secondary_subnet_ids = toset([
-    for subnet in data.aws_subnet.secondary : subnet.id
-  ])
-}
+3) Also set the password to null to generate a new random password
 
-module "auroraglobal" {
-	source = "./modules/tffiles-aurora-global" 
-	private_subnet_ids_s = ["local.subnet_ids"]
-	private_subnet_ids_p = ["local.subnet_ids"]
-	#set setup_globaldb to true if you want to create an Aurora global DB cluster spread across 2 AWS Regions
-	setup_globaldb = true
+4) Update the data section with the subnet cidrs in the primary and secondary region. 
 
-	# Set up aws_rds_cluster.primary Terraform resource as secondary Aurora cluster after an unplanned Aurora global DB failover (detach and                   promote of the secondary Region)
+4) Update the primary and secondary regions in the providers.tf file.  
 
-        # If you are setting up a brand new Aurora global cluster, set the setup_as_secondary variable to false
-        setup_as_secondary = false
-
-        #set storage_encrypted to true to enable Aurora storage encryption using AWS KMS
-        storage_encrypted = true
-
-        # Number of instances to set up for primary Aurora cluster
-        primary_instance_count = 2
-}
-```
-
-```hcl
-cd modules/tffiles-aurora-global
-Open variables.tf using vi 
-Update the default primary and secondary region. Save the file.  
-
-variable "region" {
-  type        = string
-  description = "The name of the primary AWS region you wish to deploy into"
-  default     = "us-east-1"
-}
-
-variable "sec_region" {
-  type        = string
-  description = "The name of the secondary AWS region you wish to deploy into"
-  default     = "us-west-1" 
-}
-
-
-```
-      
-8. Run `terraform apply`
-
+5) Run Terraform apply
 
 
 
