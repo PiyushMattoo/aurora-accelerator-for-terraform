@@ -37,8 +37,8 @@ A: Yes, there is a community forum in GitHub where users can ask questions, shar
 Q. What DB Engines are currently supported?
 
 A: Currently, we support below: 
-    1. Aurora Provisioned cluster (MySQL & PostgreSQL)
-    2. Aurora Global databases (MySQL & PostgreSQL)
+    1. Aurora Provisioned cluster (PostgreSQL)
+    2. Aurora Global databases (PostgreSQL)
 
 
 # Terraform Modules
