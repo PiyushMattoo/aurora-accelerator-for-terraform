@@ -5,8 +5,8 @@
 Terraform module for automating deployment of Amazon Aurora and related resources following AWS best practices.
 
 ## Supported Features
-- Aurora Provisioned cluster (MySQL & PostgreSQL)
-- Aurora Global databases (MySQL & PostgreSQL)
+- Aurora Provisioned cluster (PostgreSQL)
+- Aurora Global databases (PostgreSQL)
 
 ## Deployment Procedure
 
