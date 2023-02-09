@@ -27,12 +27,12 @@ A: Some of the key features of Aurora Accelerator for Terraform include automati
 
 Q: Is there any cost associated with using Aurora Accelerator for Terraform? 
 
-A: No, Aurora Accelerator for Terraform is an open-source solution and is completely free to use. However, you will be responsible for any AWS costs associated with running your Aurora clusters.
+A: No, Aurora Accelerator for Terraform is an open-source solution and is completely free to use. However, you will be responsible for any AWS costs associated with running your Aurora clusters and other AWS services.
 
 
 Q: Is there a community or support forum for Aurora Accelerator for Terraform? 
 
-A: Yes, there is a community forum in GitHub where users can ask questions, share best practices, and provide feedback on Aurora Accelerator for Terraform. Terraform module for automating deployment of Amazon Aurora and related resources following AWS best practices.
+A: Yes, there is a community forum in GitHub where users can ask questions, open issues, contribute and provide feedback on Aurora Accelerator for Terraform. Terraform module for automating deployment of Amazon Aurora and related resources following AWS best practices.
 
 Q. What DB Engines are currently supported?
 
