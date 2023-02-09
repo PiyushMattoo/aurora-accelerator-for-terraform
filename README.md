@@ -72,17 +72,17 @@ To deploy the Terraform Amazon Aurora module, do the following:
 
 7. The below demonstrates how you can leverage Aurora Blueprints to deploy an Aurora global cluster. Modify the paramaters below in the deploy.tf located in the top level folder. 
 
-a) Create a VPC with three availability zones (AZ) with a subnet in each AZ. 
+	a) Create a VPC with three availability zones (AZ) with a subnet in each AZ. 
 
-b) To use existing VPC subnet ids, update the locals below for the primary region and secondary region in the deploy.tf.   
+	b) To use existing VPC subnet ids, update the locals below for the primary region and secondary region in the deploy.tf.   
 
-c) Also set the password to null to generate a new random password
+	c) Also set the password to null to generate a new random password
 
-d) Update the data section with the subnet cidrs in the primary and secondary region. 
+	d) Update the data section with the subnet cidrs in the primary and secondary region. 
 
-e) Update the primary and secondary regions in the providers.tf file.  
+	e) Update the primary and secondary regions in the providers.tf file.  
 
-f) Run Terraform apply
+	f) Run Terraform apply
 
 
 
