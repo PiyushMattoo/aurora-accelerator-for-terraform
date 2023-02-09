@@ -1,7 +1,7 @@
 <!-- BEGIN_TF_DOCS -->
 > Note: This module is in alpha state and is likely to contain bugs and updates may introduce breaking changes. It is not recommended for production use at this time.
 
-# Terraform Amazon Aurora
+# Amazon Aurora Global Database
 Terraform module for automating deployment of Amazon Aurora and related resources following AWS best practices.
 
 ## Supported Features
