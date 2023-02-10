@@ -1,4 +1,4 @@
-Note: We are in alpha state and is likely updates may introduce breaking changes. It is not recommended for production use at this time.
+Note: We are in alpha state and updates may introduce breaking changes. It is not recommended for production use at this time.
 
 ## Aurora Accelerator for Terraform
 
