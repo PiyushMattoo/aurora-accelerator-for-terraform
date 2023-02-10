@@ -4,7 +4,7 @@ Note: We are in alpha state and updates may introduce breaking changes. It is no
 
 Q: What is Aurora Accelerator for Terraform? 
 
-A: Aurora Accelerator for Terraform is an open source GitHub solution that simplifies and automates initial setup and provisioning (day 1) and on-going maintainance (day 2) operations for Amazon Aurora. It's designed to remove heavy lifting required for AWS customers to migrate from commercial databases such as SQL Server to Amazon Aurora and operating these database in production.
+A: Aurora Accelerator for Terraform is an open source GitHub solution that simplifies and automates initial setup and provisioning (day 1) and on-going maintainance (day 2) operations for [Amazon Aurora](https://aws.amazon.com/rds/aurora/) database on AWS Cloud. It's designed to minimize the heavy lifting required for AWS customers to migrate from commercial databases such as SQL Server to Amazon Aurora and operating these databases in production.
 
 
 Q: Who is the intended audience for Aurora Accelerator for Terraform? 
