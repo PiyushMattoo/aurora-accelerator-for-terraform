@@ -22,8 +22,8 @@ A: Some of the key features of Aurora Accelerator for Terraform include automati
    	a. Amazon CloudWatch
    	b. Amazon Managed Grafana
 	c. Curated CloudWatch and Grafana Dashboards
-	d. Curated Performance Insights Dashboard for both [Amazon CloudWatch] (https://aws.amazon.com/cloudwatch/) and [Amazon Managed Grafana] (https://aws.amazon.com/grafana/)
-   4. Provisioning and Integration with [RDS Proxy] (https://aws.amazon.com/rds/proxy/) to reuse database connections and improved reliability
+	d. Curated Performance Insights Dashboard for both [Amazon CloudWatch](https://aws.amazon.com/cloudwatch/) and [Amazon Managed Grafana](https://aws.amazon.com/grafana/)
+   4. Provisioning and Integration with [RDS Proxy](https://aws.amazon.com/rds/proxy/) to reuse database connections and improved reliability
    5. Provisioning of Data Migration Services (DMS) Instances to migrate data to Aurora
    6. Restore cluster from S3
 
