@@ -8,12 +8,12 @@ Q: What is Aurora Accelerator for Terraform?
 A: 'Aurora Accelerator for Terraform' is an open source GitHub solution that simplifies and automates initial setup and provisioning (day 1) and on-going maintainance (day 2 operations) for [Amazon Aurora](https://aws.amazon.com/rds/aurora/) database on AWS Cloud. It's designed to minimize the heavy lifting required for AWS customers to migrate from commercial databases such as SQL Server to Amazon Aurora and operating these databases in production.
 
 
-Q: Who is the intended audience for Aurora Accelerator for Terraform? 
+Q: Who is the intended audience for 'Aurora Accelerator for Terraform'? 
 
-A: The intended audience for Aurora Accelerator for Terraform are AWS customers who are migrating from commercial databases such as SQL Server to Amazon Aurora.
+A: The intended audience for 'Aurora Accelerator for Terraform' are AWS customers who are migrating from commercial databases such as SQL Server to Amazon Aurora.
 
 
-Q: What are some of the key features of Aurora Accelerator for Terraform? 
+Q: What are some of the key features of 'Aurora Accelerator for Terraform'? 
 
 A: Some of the key features of Aurora Accelerator for Terraform include automation of common tasks:
    1. Provisioning of new Aurora cluster
@@ -22,8 +22,8 @@ A: Some of the key features of Aurora Accelerator for Terraform include automati
    	a. Amazon CloudWatch
    	b. Amazon Managed Grafana
 	c. Curated CloudWatch and Grafana Dashboards
-	d. Curated Performance Insights Dashboard for both CloudWatch and Grafana
-   4. Provisiong and Integration with RDS Proxy
+	d. Curated Performance Insights Dashboard for both [Amazon CloudWatch] (https://aws.amazon.com/cloudwatch/) and [Amazon Managed Grafana] (https://aws.amazon.com/grafana/)
+   4. Provisioning and Integration with [RDS Proxy] (https://aws.amazon.com/rds/proxy/) to reuse database connections and improved reliability
    5. Provisioning of Data Migration Services (DMS) Instances to migrate data to Aurora
    6. Restore cluster from S3
 
@@ -39,10 +39,7 @@ A: Yes, there is a community forum in GitHub where users can ask questions, open
 
 Q. What DB Engines are currently supported?
 
-A: Currently, we support below: 
-    1. Aurora Provisioned cluster (PostgreSQL)
-    2. Aurora Global databases (PostgreSQL)
-
+A: Currently, we support PostgreSQL only. MySQL database engine is on the short-term (3-6 months) roadmap. 
 
 # Terraform Modules
 
