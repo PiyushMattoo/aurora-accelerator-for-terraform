@@ -4,7 +4,10 @@ region = "us-east-2"
 
 # (mandatory) VPC Id where your database and other AWS resources will be located. 
 # For example: "vpc-0759280XX50555743"
-vpc_id = ""
+vpc_id = "vpc-04d0cfc912221b272"
+
+# (mandatory) Instance size 
+
 
 # (mandatory) Database Engine for your Aurora Cluster. Options: "aurora-postgresql" or "aurora-mysql" 
 engine = "aurora-postgresql"

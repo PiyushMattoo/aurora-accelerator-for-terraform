@@ -9,25 +9,25 @@ variable "vpc_id" {
 variable "engine" {
   description = "The name of the database engine to be used for this DB cluster. Defaults to `aurora`. Valid Values: `aurora`, `aurora-mysql`, `aurora-postgresql`"
   type        = string
-  default     = null
+  default     = ""
 }
 
 variable "engine_mode" {
   description = "The database engine mode. Valid values: `global`, `multimaster`, `parallelquery`, `provisioned`, `serverless`. Defaults to: `provisioned`"
   type        = string
-  default     = null
+  default     = ""
 }
 
 variable "engine_version" {
   description = "The database engine version. Updating this argument results in an outage"
   type        = string
-  default     = null
+  default     = ""
 }
 
 variable "instance_class" {
   description = "Instance type to use at master instance. Note: if `autoscaling_enabled` is `true`, this will be the same instance class used on instances created by autoscaling"
   type        = string
-  default     = "db.r6g.large"
+  default     = ""
 }
 
 variable "name" {}
