@@ -30,7 +30,7 @@ module "aurora_poc" {
     instance_class  = local.instance_class 
     region	    = local.region
     vpc_id      = local.vpc_id
-    subnets    = tolist(data.aws_subnet_ids.primary.ids)
+    subnets     = tolist(data.aws_subnet_ids.primary.ids)
     engine      = local.engine
     engine_mode = local.engine_mode
     name		    = local.name
