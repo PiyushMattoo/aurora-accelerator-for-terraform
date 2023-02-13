@@ -6,8 +6,9 @@ region = "us-east-2"
 # For example: "vpc-0759280XX50555743"
 vpc_id = "vpc-04d0cfc912221b272"
 
-# (mandatory) Instance size 
-
+# (mandatory) Instance class. 
+# For example: "db.t4g.micro" is a free tier instance 
+instance_class ="db.t4g.micro"
 
 # (mandatory) Database Engine for your Aurora Cluster. Options: "aurora-postgresql" or "aurora-mysql" 
 engine = "aurora-postgresql"
