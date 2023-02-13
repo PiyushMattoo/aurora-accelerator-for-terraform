@@ -1,7 +1,9 @@
-### Note: 
+# Aurora Accelerator for Terraform
+
+## Note: 
 We are in alpha state currently and updates may introduce breaking changes. Solution is not recommended for production use at this time.
 
-## Aurora Accelerator for Terraform
+## FAQ
 
 Q: What is Aurora Accelerator for Terraform? 
 
