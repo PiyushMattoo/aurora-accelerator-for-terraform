@@ -7,14 +7,15 @@ data "aws_subnet_ids" "primary" {
 }
 
 locals {
-  region      = var.region
-  vpc_id      = var.vpc_id
-  name        = var.name
-  engine      = var.engine
-  engine_mode = var.engine_mode
-  environment = var.environment
-  groupname   = var.groupname
-  project     = var.project
+  region         = var.region
+  vpc_id         = var.vpc_id
+  name           = var.name
+  engine         = var.engine
+  engine_mode    = var.engine_mode
+  instance_class = var.instance_class
+  environment    = var.environment
+  groupname      = var.groupname
+  project        = var.project
   tags        = {
                   Name = local.name
                   GroupName = local.groupname
@@ -26,10 +27,10 @@ locals {
 # deploy aurora database cluster
 module "aurora_poc" {
     source = "../../modules/tffiles-rds"
-
+    instance_class  = local.instance_class 
     region	    = local.region
     vpc_id      = local.vpc_id
-    subnets     = tolist(data.aws_subnet_ids.primary.ids)
+    subnets    = tolist(data.aws_subnet_ids.primary.ids)
     engine      = local.engine
     engine_mode = local.engine_mode
     name		    = local.name
