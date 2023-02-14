@@ -47,7 +47,7 @@ terraform plan -var-file terraform.tfvars
 To create resources
 
 ```shell script
-terraform apply -var-file terraform.tfvars -auto-approve
+terraform apply -var-file terraform.tfvars
 ```
 
 ## Cleanup
@@ -55,6 +55,6 @@ terraform apply -var-file terraform.tfvars -auto-approve
 To clean up your environment, destroy the AWS resources created 
 
 ```sh
-terraform destroy -var-file terraform.tfvars -auto-approve
+terraform destroy -var-file terraform.tfvars
 ```
 
