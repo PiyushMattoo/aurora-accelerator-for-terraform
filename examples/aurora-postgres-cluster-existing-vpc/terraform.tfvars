@@ -22,8 +22,8 @@ instances = {
 # (optional) Default is provisioned database cluster; For serverless, select "serverless"
 engine_mode = "provisioned"
 
-# (optional) The database engine version. Updating this argument results in an outage"
-engine_version = "11.12"
+# (optional) The database engine version. Updating this argument results in an outage" 
+engine_version = "13.3"
 
 # (optional) Database cluster name
 name = "aurora-pg-poc"
