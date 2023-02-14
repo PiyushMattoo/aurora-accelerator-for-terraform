@@ -11,7 +11,9 @@ locals {
   vpc_id         = var.vpc_id
   name           = var.name
   engine         = var.engine
+  engine_version = var.engine_version
   engine_mode    = var.engine_mode
+  instances      = var.instances
   instance_class = var.instance_class
   environment    = var.environment
   groupname      = var.groupname
@@ -33,6 +35,8 @@ module "aurora_poc" {
     subnets     = tolist(data.aws_subnet_ids.primary.ids)
     engine      = local.engine
     engine_mode = local.engine_mode
+    instances   = local.instances
+    engine_version  = local.engine_version 
     name		    = local.name
     environment	= local.environment
     groupname	  = local.groupname

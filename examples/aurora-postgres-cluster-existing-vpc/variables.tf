@@ -30,6 +30,11 @@ variable "instance_class" {
   default     = ""
 }
 
+variable "instances" {
+  description = "Map of cluster instances and any specific/overriding attributes to be created"
+  type        = any
+  default     = {}
+}
 variable "name" {}
 variable "environment" {}
 variable "groupname" {}

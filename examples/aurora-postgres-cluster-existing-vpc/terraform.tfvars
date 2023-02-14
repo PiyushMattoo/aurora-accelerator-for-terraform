@@ -8,16 +8,22 @@ vpc_id = "vpc-04d0cfc912221b272"
 
 # (mandatory) Instance class. 
 # For example: "db.t4g.micro" is a free tier instance 
-instance_class ="db.t4g.micro"
+instance_class ="db.r6g.large"
 
 # (mandatory) Database Engine for your Aurora Cluster. Options: "aurora-postgresql" or "aurora-mysql" 
 engine = "aurora-postgresql"
+
+# (mandatory) Number of instances 
+instances = {
+    one   = {}
+    two   = {}
+}
 
 # (optional) Default is provisioned database cluster; For serverless, select "serverless"
 engine_mode = "provisioned"
 
 # (optional) The database engine version. Updating this argument results in an outage"
-engine_version = ""
+engine_version = "11.12"
 
 # (optional) Database cluster name
 name = "aurora-pg-poc"
