@@ -1,14 +1,11 @@
 # Aurora Accelerator for Terraform
 
+'Aurora Accelerator for Terraform' is an open source and collection of Terraform modules that simplifies and automates initial setup and provisioning (day 1) and on-going maintainance (day 2 operations) for [Amazon Aurora](https://aws.amazon.com/rds/aurora/) database on AWS Cloud. It's designed to minimize the heavy lifting required for AWS customers to migrate from commercial databases such as SQL Server to Amazon Aurora and operating these databases in production.
+
 ## Note: 
 We are in alpha state currently and updates may introduce breaking changes. Solution is not recommended for production use at this time.
 
 ## FAQ
-
-Q: What is Aurora Accelerator for Terraform? 
-
-A: 'Aurora Accelerator for Terraform' is an open source GitHub solution that simplifies and automates initial setup and provisioning (day 1) and on-going maintainance (day 2 operations) for [Amazon Aurora](https://aws.amazon.com/rds/aurora/) database on AWS Cloud. It's designed to minimize the heavy lifting required for AWS customers to migrate from commercial databases such as SQL Server to Amazon Aurora and operating these databases in production.
-
 
 Q: Who is the intended audience for 'Aurora Accelerator for Terraform'? 
 
@@ -43,48 +40,61 @@ Q. What DB Engines are currently supported?
 
 A: Currently, we support PostgreSQL only. MySQL database engine is on the short-term (3-6 months) roadmap. 
 
-# Terraform Modules
+# Getting Started
 
-Here's how you can automate deployment of Amazon Aurora and related resources following AWS best practices.
+Below sample example demonstrate how you can leverage Aurora Accelerator to provision new cluster.
 
+## Prerequisites
 
-## Deployment Procedure
+First, ensure that you have installed the following tools locally.
 
-To deploy the Terraform Amazon Aurora module, do the following:
+1. [aws cli](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
+2. [kubectl](https://kubernetes.io/docs/tasks/tools/)
+3. [terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 
-1. Install Terraform. For instructions and a video tutorial, see [Install Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli).
+## Deployment Steps
 
-2. [Install](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) and [configure](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html) the AWS Command Line Interface (AWS CLI).
+The following steps will walk you through the deployment of an example blueprint. This example expect you to leverage an existing VPC and provision a new Aurora Cluster with one writer and one reader instance. You can customize it however:
 
-3. If you don't have git installed, [install git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+### Step 1: Clone the repo using the command below
 
-4. Clone this ** awsdabra/aurora-accelerator-for-terraform** repository using the following command:
+```sh
+git clone https://github.com/awsdabra/aurora-accelerator-for-terraform
+```
 
-   `git clone https://github.com/awsdabra/aurora-accelerator-for-terraform.git`
+### Step 2: Review and update the terraform.tfvars
+Review the Terraform variable definition file called terraform.tfvars and update the values for the variables as per your use case. The following shows an example for the variable to specify AWS region for your database related resources.
+```shell script
+region = "us-east-2"
+```
 
-5. Change directory to the root repository directory.
-
-   `cd aurora-accelerator-for-terraform/`
-
-
-6. Deploy Aurora Terraform module.
-   1. To create VPC and deploy Aurora module
-      - Initialize the deploy directory. Run `terraform init`.
-      - Start a Terraform run using the configuration files (deploy.tf) in your deploy directory. 
-
-7. The below demonstrates how you can leverage Aurora Blueprints to deploy an Aurora global cluster. Modify the paramaters below in the deploy.tf located in the top level folder. 
-
-	a) Create a VPC with three availability zones (AZ) with a subnet in each AZ. 
-
-	b) To use existing VPC subnet ids, update the locals below for the primary region and secondary region in the deploy.tf.   
-
-	c) Also set the password to null to generate a new random password
-
-	d) Update the data section with the subnet cidrs in the primary and secondary region. 
-
-	e) Update the primary and secondary regions in the providers.tf file.  
-
-	f) Run Terraform apply
+### Step 3: Run Terraform INIT
+Initialize a working directory with configuration files
 
 
+```shell script
+cd examples/aurora-postgres-cluster-existing-vpc
+terraform init
+```
 
+### Step 4: Run Terraform PLAN
+Verify the resources created by this execution
+
+```shell script
+terraform plan -var-file terraform.tfvars
+```
+
+### Step 5: Terraform APPLY
+To create resources
+
+```shell script
+terraform apply -var-file terraform.tfvars
+```
+
+### Cleanup
+
+To clean up your environment, destroy the AWS resources created 
+
+```sh
+terraform destroy -var-file terraform.tfvars
+```
