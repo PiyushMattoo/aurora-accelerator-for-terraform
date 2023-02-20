@@ -7,5 +7,5 @@ name = "rds-proxy-ex-postgres"
 # (mandatory) VPC Id. For example: "vpc-04d0cfc912221b272"
 vpc_id = ""
 
-# (mandatory) existing aurora clustername. For example : "aurora-pg-poc-cluster-dev-a805da4a"
+# (mandatory) Existing aurora clustername. For example : "aurora-pg-poc-cluster-dev-a805da4a"
 clusterName = ""
