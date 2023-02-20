@@ -22,9 +22,14 @@ git clone https://github.com/awsdabra/aurora-accelerator-for-terraform
 ```
 
 #### Step2: Review and update the terraform.tfvars
-Create a Terraform variable definition file called terraform.tfvars and update the values for the variables. The following shows an example for the variable to specify AWS region for your database related resources.
+Create a Terraform variable definition file called terraform.tfvars and update the values for the variables. The following shows an example for the variable to specify AWS region for your database related resources and a few other mandatory resources.  
+
 ```shell script
 region = "us-east-2"
+name = "rds-proxy-ex-postgres"
+vpc_id = "vpc-04d0cfc912221b272""
+clusterName = "aurora-pg-poc-cluster-dev-a805da4a"
+
 ```
 
 #### Step3: Run Terraform INIT
