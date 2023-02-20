@@ -55,7 +55,7 @@ To create resources
 terraform apply -var-file terraform.tfvars
 ```
 
-### Step6: Capture the outputs for resources
+### Step6: (Optional) Capture the outputs for resources
 Copy all of the resources created to an internal document 
 
 
