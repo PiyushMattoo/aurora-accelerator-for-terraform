@@ -1,11 +1,11 @@
-# (mandatory) AWS Region where your resources will be located
+# (mandatory) AWS Region where your resources will be located. Update for your specific usecase
 region = "us-east-2"
 
-# (mandatory) DB proxy name
+# (mandatory) DB proxy name. Customize name as per your use specific usecase
 name = "rds-proxy-ex-postgres"
 
-# (mandatory) VPC
-vpc_id = "vpc-04d0cfc912221b272"
+# (mandatory) VPC Id. For example: "vpc-04d0cfc912221b272"
+vpc_id = ""
 
-# (mandatory) existing aurora clustername
-clusterName = "aurora-pg-poc-cluster-dev-a805da4a"
+# (mandatory) existing aurora clustername. For example : "aurora-pg-poc-cluster-dev-a805da4a"
+clusterName = ""
